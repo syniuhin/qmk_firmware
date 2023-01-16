@@ -16,6 +16,26 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include QMK_KEYBOARD_H
 
+enum custom_keycodes { RGB_SPL = SAFE_RANGE, RGB_MSPL };
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case RGB_SPL:
+            if (record->event.pressed) {
+                // Do something when pressed
+                rgb_matrix_mode(RGB_MATRIX_SOLID_SPLASH);
+            }
+            return false; // Skip all further processing of this key
+        case RGB_MSPL:
+            if (record->event.pressed) {
+                rgb_matrix_mode(RGB_MATRIX_SOLID_MULTISPLASH);
+            }
+            return false; // Skip all further processing of this key
+        default:
+            return true; // Process all other keycodes normally
+    }
+}
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -68,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [1] = LAYOUT(
         _______, KC_BRID, KC_BRIU, _______, _______, RGB_VAD, RGB_VAI, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU, RGB_TOG,          KC_PWR,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, NK_TOGG,          RGB_M_P,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, QK_BOOT,          RGB_M_B,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, QK_BOOT,          RGB_SPL,
         KC_CAPS, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,          RGB_HUI,
         _______,          _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, RGB_MOD, RGB_HUD,
         _______, _______, _______,                            _______,                            _______, _______, _______, RGB_SPD, RGB_RMOD, RGB_SPI
