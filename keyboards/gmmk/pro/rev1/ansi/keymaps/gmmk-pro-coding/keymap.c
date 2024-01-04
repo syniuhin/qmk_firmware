@@ -101,7 +101,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [1] = LAYOUT(
-        RGB_TOG, KC_BRID, KC_BRIU, _______,  _______,   RGB_VAD,  RGB_VAI, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU, _______,           _______,
+        RGB_TOG, KC_BRID, KC_BRIU, _______,  _______,   RGB_VAD,  RGB_VAI, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU, _______,           KC_SYSTEM_SLEEP,
         _______, RGB_M_P, RGB_RS, RGB_RCTW,  RGB_RCTMW, RGB_SPL, RGB_MSPL, _______, _______, _______, _______, _______, _______, _______,           _______,
         _______, _______, _______, _______,  _______,   _______,  _______, _______, _______, _______, _______, _______, _______, QK_BOOT,           _______,
         _______, _______, _______, _______,  _______,   _______,  _______, _______, _______, _______, _______, _______,          _______,           RGB_HUI,
